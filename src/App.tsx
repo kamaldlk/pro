@@ -102,13 +102,7 @@ const MenuCard = () => {
         type="vertical"
       />
       <Popover
-        // placement="bottomRight"
-        overlayStyle={{
-          padding: '24px',
-          paddingTop: 8,
-          height: '307px',
-          borderRadius: '0 0 6px 6px',
-        }}
+        placement="bottomLeft"
         content={
           <div style={{ display: 'flex', padding: '32px 40px' }}>
             <div style={{ flex: 1 }}>
@@ -269,7 +263,7 @@ export default () => {
     >
       <ProConfigProvider hashed={false}>
         <ProLayout
-          prefixCls="my-prefix"
+          prefixCls="qd"
           bgLayoutImgList={[
             {
               src: 'https://img.alicdn.com/imgextra/i2/O1CN01O4etvp1DvpFLKfuWq_!!6000000000279-2-tps-609-606.png',

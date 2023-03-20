@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { ProProvider } from '@ant-design/pro-provider';
 import { ConfigProvider } from 'antd';
 
@@ -22,7 +23,6 @@ const TopNavHeader: React.FC<TopNavHeaderProps> = (props: TopNavHeaderProps) => 
   const {
     onMenuHeaderClick,
     contentWidth,
-    rightContentRender,
     className: propsClassName,
     style,
     headerContentRender,
@@ -133,9 +133,8 @@ const TopNavHeader: React.FC<TopNavHeaderProps> = (props: TopNavHeaderProps) => 
         <div style={{ flex: 1 }} className={`${prefixCls}-menu ${hashId}`}>
           {contentDom}
         </div>
-        {(rightContentRender || actionsRender || props.avatarProps) && (
+        {(actionsRender || props.avatarProps) && (
           <ActionsContent
-            rightContentRender={rightContentRender}
             {...props}
             prefixCls={prefixCls}
           />

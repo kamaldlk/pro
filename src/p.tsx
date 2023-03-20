@@ -7,26 +7,26 @@ export default {
     routes: [
       {
         path: '/welcome',
-        name: '欢迎',
+        name: 'welcome',
         icon: <SmileFilled />,
         component: './Welcome',
       },
       {
-        path: '/admin',
-        name: '管理页',
+        path: '/welcome',
+        name: 'welcome',
         icon: <CrownFilled />,
         access: 'canAdmin',
         component: './Admin',
         routes: [
           {
             path: '/admin/sub-page1',
-            name: '一级页面',
+            name: 'sub-page1',
             icon: 'https://gw.alipayobjects.com/zos/antfincdn/upvrAjAPQX/Logo_Tech%252520UI.svg',
             component: './Welcome',
           },
           {
             path: '/admin/sub-page2',
-            name: '二级页面',
+            name: 'sub-page2',
             icon: <CrownFilled />,
             component: './Welcome',
           },
@@ -39,31 +39,31 @@ export default {
         ],
       },
       {
-        name: '列表页',
+        name: 'list',
         icon: <TabletFilled />,
         path: '/list',
         component: './ListTableList',
         routes: [
           {
             path: '/list/sub-page',
-            name: '列表页面',
+            name: 'sub-page',
             icon: <CrownFilled />,
             routes: [
               {
                 path: 'sub-sub-page1',
-                name: '一一级列表页面',
+                name: 'sub-sub-page1',
                 icon: <CrownFilled />,
                 component: './Welcome',
               },
               {
                 path: 'sub-sub-page2',
-                name: '一二级列表页面',
+                name: 'sub-sub-page2',
                 icon: <CrownFilled />,
                 component: './Welcome',
               },
               {
                 path: 'sub-sub-page3',
-                name: '一三级列表页面',
+                name: 'sub-sub-page3',
                 icon: <CrownFilled />,
                 component: './Welcome',
               },
@@ -71,13 +71,13 @@ export default {
           },
           {
             path: '/list/sub-page2',
-            name: '二级列表页面',
+            name: 'sub-page2',
             icon: <CrownFilled />,
             component: './Welcome',
           },
           {
             path: '/list/sub-page3',
-            name: '三级列表页面',
+            name: 'sub-page3',
             icon: <CrownFilled />,
             component: './Welcome',
           },
@@ -85,7 +85,7 @@ export default {
       },
       {
         path: 'https://ant.design',
-        name: 'Ant Design 官网外链',
+        name: 'Ant Design ',
         icon: <ChromeFilled />,
       },
     ],
