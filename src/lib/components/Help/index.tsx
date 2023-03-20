@@ -6,10 +6,10 @@ import { Popover, Menu, Image, Typography, Card, ConfigProvider, Drawer, Modal }
 import type { AnchorHTMLAttributes } from 'react';
 import React, { useContext, useMemo, useState } from 'react';
 import useMergedState from 'rc-util/lib/hooks/useMergedState';
-import type { ProHelpDataSource, ProHelpDataSourceChildren } from './HelpProvide';
-import { ProHelpProvide } from './HelpProvide';
+import type { ProHelpDataSource, ProHelpDataSourceChildren } from './helpprovide';
+import { ProHelpProvide } from './helpprovide';
 import { useStyle } from './style';
-import { ProHelpSelect } from './Search';
+import { ProHelpSelect } from './search';
 
 export type { ProHelpDataSource, ProHelpDataSourceChildren };
 export { ProHelpProvide, ProHelpSelect };

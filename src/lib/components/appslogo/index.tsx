@@ -2,9 +2,9 @@
 import { Popover } from 'antd';
 import classNames from 'classnames';
 import React, { useMemo, useState } from 'react';
-import { AppsLogo } from './AppsLogo';
-import { DefaultContent } from './DefaultContent';
-import { SimpleContent } from './SimpleContent';
+import { AppsLogo } from './appslogo';
+import { DefaultContent } from './defaultcontent';
+import { SimpleContent } from './simplecontent';
 import { useStyle } from './style/index';
 import type { AppListProps, AppItemProps } from './types';
 

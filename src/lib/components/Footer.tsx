@@ -3,7 +3,7 @@ import { Layout } from 'antd';
 import type { CSSProperties } from 'react';
 import React, { Fragment } from 'react';
 import type { WithFalse } from '../typing';
-import { GlobalFooter } from './GlobalFooter';
+import { GlobalFooter } from './globalfooter';
 
 const { Footer } = Layout;
 

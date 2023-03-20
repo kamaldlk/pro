@@ -1,5 +1,5 @@
 import pathToRegexp from 'path-to-regexp';
-import type { ProSettings } from './defaultSettings';
+import type { ProSettings } from './defaultsettings';
 import type { MenuDataItem } from './typing';
 
 type BreadcrumbItem = Omit<MenuDataItem, 'children' | 'routes'> & {
@@ -10,8 +10,6 @@ export const matchParamsPath = (
   breadcrumb: any,
   breadcrumbMap: any,
 ): any => {
-  // Internal logic use breadcrumbMap to ensure the order
-  // 内部逻辑使用 breadcrumbMap 来确保查询顺序
   if (breadcrumbMap) {
     const pathKey = [...breadcrumbMap.keys()].find((key) => pathToRegexp(key).test(pathname));
     if (pathKey) {
@@ -19,8 +17,6 @@ export const matchParamsPath = (
     }
   }
 
-  // External uses use breadcrumb
-  // 外部用户使用 breadcrumb 参数
   if (breadcrumb) {
     const pathKey = Object.keys(breadcrumb).find((key) => pathToRegexp(key).test(pathname));
 
@@ -44,12 +40,6 @@ export type GetPageTitleProps = {
   formatMessage?: (data: { id: any; defaultMessage?: string }) => string;
 };
 
-/**
- * 获取关于 pageTitle 的所有信息方便包装
- *
- * @param props
- * @param ignoreTitle
- */
 export const getPageTitleInfo = (
   props: GetPageTitleProps,
   ignoreTitle?: boolean,

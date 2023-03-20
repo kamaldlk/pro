@@ -1,7 +1,7 @@
 import { List, Select, Switch, Tooltip } from 'antd';
 import React from 'react';
-import type { ProSettings } from '../../defaultSettings';
-import { defaultSettings } from '../../defaultSettings';
+import type { ProSettings } from '../../defaultsettings';
+import { defaultSettings } from '../../defaultsettings';
 import type { SettingItemProps } from './index';
 import { getFormatMessage } from './index';
 

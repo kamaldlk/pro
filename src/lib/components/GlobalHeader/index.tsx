@@ -3,18 +3,18 @@ import type { AvatarProps } from 'antd';
 import { ConfigProvider } from 'antd';
 import classNames from 'classnames';
 import React, { useContext } from 'react';
-import type { PureSettings } from '../../defaultSettings';
+import type { PureSettings } from '../../defaultsettings';
 import type { MenuDataItem } from '../../index';
 import type { WithFalse } from '../../typing';
 import { clearMenuItem } from '../../utils/utils';
-import { AppsLogoComponents, defaultRenderLogo } from '../AppsLogoComponents';
-import type { HeaderViewProps } from '../Header';
-import type { PrivateSiderMenuProps, SiderMenuProps } from '../SiderMenu/SiderMenu';
-import { renderLogoAndTitle } from '../SiderMenu/SiderMenu';
-import { TopNavHeader } from '../TopNavHeader';
-import { ActionsContent as ActionsContent } from './ActionsContent';
+import { AppsLogoComponents, defaultRenderLogo } from '../appslogo';
+import type { HeaderViewProps } from '../header';
+import type { PrivateSiderMenuProps, SiderMenuProps } from '../sidermenu/SiderMenu';
+import { renderLogoAndTitle } from '../sidermenu/SiderMenu';
+import { TopNavHeader } from '../topnavheader';
+import { ActionsContent as ActionsContent } from './actionscontent';
 import { useStyle } from './style';
-import type { AppListProps, AppItemProps } from '../AppsLogoComponents/types';
+import type { AppListProps, AppItemProps } from '../appslogo/types';
 
 export type GlobalHeaderProps = {
   collapsed?: boolean;

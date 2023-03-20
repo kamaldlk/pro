@@ -6,7 +6,7 @@ import { ConfigProvider, Select } from 'antd';
 
 import React, { useState } from 'react';
 import { useContext } from 'react';
-import { ProHelpProvide } from './HelpProvide';
+import { ProHelpProvide } from './helpprovide';
 
 /**
  * 在一段文本中高亮显示指定的关键词，将文本和匹配项分别处理并放入数组中，最终返回包含高亮文本的组件。

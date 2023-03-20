@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import ResizeObserver from 'rc-resize-observer';
 import React, { useContext, useMemo, useState } from 'react';
 import type { GlobalHeaderProps } from '.';
-import { useStyle } from './rightContentStyle';
+import { useStyle } from './rightcontentstyle';
 /**
  * 抽离出来是为了防止 rightSize 经常改变导致菜单 render
  *
@@ -50,36 +50,36 @@ export const ActionsContent: React.FC<GlobalHeaderProps> = ({
   const rightActionsRender =
     actionsRender || avatarDom
       ? (restParams: any) => {
-          let doms = actionsRender && actionsRender?.(restParams);
+        let doms = actionsRender && actionsRender?.(restParams);
 
-          if (!doms && !avatarDom) return null;
-          if (!Array.isArray(doms)) doms = [doms];
-          return wrapSSR(
-            <div className={`${prefixCls}-header-actions ${hashId}`}>
-              {doms.filter(Boolean).map((dom, index) => {
-                let hideHover = false;
-                // 如果配置了 hideHover 就不展示 hover 效果了
-                if (React.isValidElement(dom)) {
-                  hideHover = !!dom?.props?.['aria-hidden'];
-                }
-                return (
-                  <div
-                    // eslint-disable-next-line react/no-array-index-key
-                    key={index}
-                    className={classNames(`${prefixCls}-header-actions-item ${hashId}`, {
-                      [`${prefixCls}-header-actions-hover`]: !hideHover,
-                    })}
-                  >
-                    {dom}
-                  </div>
-                );
-              })}
-              {avatarDom && (
-                <span className={`${prefixCls}-header-actions-avatar ${hashId}`}>{avatarDom}</span>
-              )}
-            </div>,
-          );
-        }
+        if (!doms && !avatarDom) return null;
+        if (!Array.isArray(doms)) doms = [doms];
+        return wrapSSR(
+          <div className={`${prefixCls}-header-actions ${hashId}`}>
+            {doms.filter(Boolean).map((dom, index) => {
+              let hideHover = false;
+              // 如果配置了 hideHover 就不展示 hover 效果了
+              if (React.isValidElement(dom)) {
+                hideHover = !!dom?.props?.['aria-hidden'];
+              }
+              return (
+                <div
+                  // eslint-disable-next-line react/no-array-index-key
+                  key={index}
+                  className={classNames(`${prefixCls}-header-actions-item ${hashId}`, {
+                    [`${prefixCls}-header-actions-hover`]: !hideHover,
+                  })}
+                >
+                  {dom}
+                </div>
+              );
+            })}
+            {avatarDom && (
+              <span className={`${prefixCls}-header-actions-avatar ${hashId}`}>{avatarDom}</span>
+            )}
+          </div>,
+        );
+      }
       : undefined;
   /** 减少一下渲染的次数 */
   const setRightSizeDebounceFn = useDebounceFn(async (width: number) => {

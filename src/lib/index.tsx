@@ -1,4 +1,3 @@
-// 兼容代码-----------
 import 'antd/lib/anchor/style';
 import 'antd/lib/avatar/style';
 import 'antd/lib/breadcrumb/style';
@@ -16,40 +15,39 @@ import 'antd/lib/switch/style';
 import 'antd/lib/tabs/style';
 import 'antd/lib/tooltip/style';
 import 'antd/lib/typography/style';
-//----------------------
 
-import { FooterToolbar } from './components/FooterToolbar';
-import { GridContent } from './components/GridContent';
-import type { PageContainerProps } from './components/PageContainer';
-import { PageContainer, ProBreadcrumb, ProPageHeader } from './components/PageContainer';
-import type { PageHeaderProps } from './components/PageHeader';
-import { PageHeader } from './components/PageHeader';
-import type { AppItemProps, AppListProps } from './components/AppsLogoComponents/types';
+import { FooterToolbar } from './components/footertoolbar';
+import { GridContent } from './components/gridcontent';
+import type { PageContainerProps } from './components/pagecontainer';
+import { PageContainer, ProBreadcrumb, ProPageHeader } from './components/pagecontainer';
+import type { PageHeaderProps } from './components/pageheader';
+import { PageHeader } from './components/pageheader';
+import type { AppItemProps, AppListProps } from './components/appslogo/types';
 
-import type { FooterProps } from './components/Footer';
-import { DefaultFooter } from './components/Footer';
-import type { HeaderViewProps as HeaderProps } from './components/Header';
-import { DefaultHeader } from './components/Header';
-import { PageLoading } from './components/PageLoading';
-import type { SettingDrawerProps, SettingDrawerState } from './components/SettingDrawer';
-import { SettingDrawer } from './components/SettingDrawer';
-import type { TopNavHeaderProps } from './components/TopNavHeader';
-import { TopNavHeader } from './components/TopNavHeader';
-import type { WaterMarkProps } from './components/WaterMark';
-import { WaterMark } from './components/WaterMark';
-import type { RouteContextType } from './context/RouteContext';
-import { RouteContext } from './context/RouteContext';
-import { getPageTitle } from './getPageTitle';
-import type { ProLayoutProps } from './ProLayout';
-import { ProLayout } from './ProLayout';
-import { getMenuData } from './utils/getMenuData';
+import type { FooterProps } from './components/footer';
+import { DefaultFooter } from './components/footer';
+import type { HeaderViewProps as HeaderProps } from './components/header';
+import { DefaultHeader } from './components/header';
+import { PageLoading } from './components/pageloading';
+import type { SettingDrawerProps, SettingDrawerState } from './components/settingdrawer';
+import { SettingDrawer } from './components/settingdrawer';
+import type { TopNavHeaderProps } from './components/topnavheader';
+import { TopNavHeader } from './components/topnavheader';
+import type { WaterMarkProps } from './components/watermark';
+import { WaterMark } from './components/watermark';
+import type { RouteContextType } from './context/routecontext';
+import { RouteContext } from './context/routecontext';
+import { getPageTitle } from './getpagetitle';
+import type { ProLayoutProps } from './layout';
+import { ProLayout } from './layout';
+import { getMenuData } from './utils/getmenudata';
 import { ProCard } from '@ant-design/pro-components';
 import { ProConfigProvider } from '@ant-design/pro-components';
-export type { ProSettings, ProSettings as Settings } from './defaultSettings';
+export type { ProSettings, ProSettings as Settings } from './defaultsettings';
 export type { MenuDataItem } from './typing';
 
 
-export * from './components/Help';
+export * from './components/help';
 
 export {
   PageHeader,

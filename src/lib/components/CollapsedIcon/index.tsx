@@ -1,5 +1,5 @@
 ﻿import classNames from 'classnames';
-import { ArrowSvgIcon } from '../SiderMenu/Arrow';
+import { ArrowSvgIcon } from '../sidermenu/Arrow';
 import { useStyle } from './style';
 
 export const CollapsedIcon: React.FC<any> = (props) => {

@@ -5,10 +5,10 @@ import React, { useCallback, useContext } from 'react';
 import { useStyle } from './style/header';
 import type { WithFalse } from '../../typing';
 import { clearMenuItem } from '../../utils/utils';
-import type { GlobalHeaderProps } from '../GlobalHeader';
-import { GlobalHeader } from '../GlobalHeader';
-import type { PrivateSiderMenuProps } from '../SiderMenu/SiderMenu';
-import { TopNavHeader } from '../TopNavHeader';
+import type { GlobalHeaderProps } from '../globalheader';
+import { GlobalHeader } from '../globalheader';
+import type { PrivateSiderMenuProps } from '../sidermenu/SiderMenu';
+import { TopNavHeader } from '../topnavheader';
 import { useStylish } from './style/stylish';
 
 const { Header } = Layout;

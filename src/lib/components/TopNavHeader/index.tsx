@@ -3,16 +3,16 @@ import { ConfigProvider } from 'antd';
 
 import classNames from 'classnames';
 import React, { useContext, useMemo, useRef } from 'react';
-import { AppsLogoComponents } from '../AppsLogoComponents';
-import type { GlobalHeaderProps } from '../GlobalHeader';
-import { ActionsContent } from '../GlobalHeader/ActionsContent';
-import { BaseMenu } from '../SiderMenu/BaseMenu';
+import { AppsLogoComponents } from '../appslogo';
+import type { GlobalHeaderProps } from '../globalheader';
+import { ActionsContent } from '../globalheader/actionscontent';
+import { BaseMenu } from '../sidermenu/BaseMenu';
 import type {
   HeaderRenderKey,
   PrivateSiderMenuProps,
   SiderMenuProps,
-} from '../SiderMenu/SiderMenu';
-import { renderLogoAndTitle } from '../SiderMenu/SiderMenu';
+} from '../sidermenu/SiderMenu';
+import { renderLogoAndTitle } from '../sidermenu/SiderMenu';
 import { useStyle } from './style';
 
 export type TopNavHeaderProps = SiderMenuProps & GlobalHeaderProps & PrivateSiderMenuProps;

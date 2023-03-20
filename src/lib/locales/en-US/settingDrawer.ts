@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 export default {
   'app.setting.pagestyle': 'Page style setting',
   'app.setting.pagestyle.dark': 'Dark Menu style',

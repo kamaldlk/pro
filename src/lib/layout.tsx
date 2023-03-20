@@ -12,30 +12,30 @@ import type { CSSProperties } from 'react';
 import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import useSWR, { useSWRConfig } from 'swr';
 import useAntdMediaQuery from 'use-media-antd-query';
-import { Logo } from './assert/Logo';
-import { DefaultFooter as Footer } from './components/Footer';
-import type { HeaderViewProps } from './components/Header';
-import { DefaultHeader as Header } from './components/Header';
-import { PageLoading } from './components/PageLoading';
-import { SiderMenu } from './components/SiderMenu';
-import type { SiderMenuProps } from './components/SiderMenu/SiderMenu';
-import type { SiderMenuToken } from './components/SiderMenu/style';
-import type { WaterMarkProps } from './components/WaterMark';
-import { RouteContext } from './context/RouteContext';
-import type { ProSettings } from './defaultSettings';
-import { defaultSettings } from './defaultSettings';
-import type { GetPageTitleProps } from './getPageTitle';
-import { getPageTitleInfo } from './getPageTitle';
+import { Logo } from './assert/logo';
+import { DefaultFooter as Footer } from './components/footer';
+import type { HeaderViewProps } from './components/header';
+import { DefaultHeader as Header } from './components/header';
+import { PageLoading } from './components/pageloading';
+import { SiderMenu } from './components/sidermenu';
+import type { SiderMenuProps } from './components/sidermenu/SiderMenu';
+import type { SiderMenuToken } from './components/sidermenu/style';
+import type { WaterMarkProps } from './components/watermark';
+import { RouteContext } from './context/routecontext';
+import type { ProSettings } from './defaultsettings';
+import { defaultSettings } from './defaultsettings';
+import type { GetPageTitleProps } from './getpagetitle';
+import { getPageTitleInfo } from './getpagetitle';
 import type { LocaleType } from './locales';
 import { gLocaleObject } from './locales';
 import { useStyle } from './style';
 import type { MenuDataItem, MessageDescriptor, RouterTypes, WithFalse } from './typing';
-import type { BreadcrumbProLayoutProps } from './utils/getBreadcrumbProps';
-import { getBreadcrumbProps } from './utils/getBreadcrumbProps';
-import { getMenuData } from './utils/getMenuData';
-import { useCurrentMenuLayoutProps } from './utils/useCurrentMenuLayoutProps';
+import type { BreadcrumbProLayoutProps } from './utils/getbreadcrumbprops';
+import { getBreadcrumbProps } from './utils/getbreadcrumbprops';
+import { getMenuData } from './utils/getmenudata';
+import { useCurrentMenuLayoutProps } from './utils/usecurrentmenulayoutprops';
 import { clearMenuItem } from './utils/utils';
-import { WrapContent } from './WrapContent';
+import { WrapContent } from './wrapcontent';
 
 let layoutIndex = 0;
 
@@ -45,10 +45,10 @@ export type LayoutBreadcrumbProps = {
 
 type GlobalTypes = Omit<
   Partial<RouterTypes> &
-    SiderMenuProps &
-    HeaderViewProps & {
-      token?: ProTokenType['layout'];
-    },
+  SiderMenuProps &
+  HeaderViewProps & {
+    token?: ProTokenType['layout'];
+  },
   'collapsed'
 >;
 
@@ -57,7 +57,6 @@ export type ProLayoutProps = GlobalTypes & {
     header?: GenerateStyle<SiderMenuToken>;
     sider?: GenerateStyle<SiderMenuToken>;
   };
-  /** Layout 的品牌配置，表现为一张背景图片 */
   bgLayoutImgList?: {
     src?: string;
     width?: string;
@@ -67,170 +66,65 @@ export type ProLayoutProps = GlobalTypes & {
     bottom?: number;
     right?: number;
   }[];
-  /**
-   * @name 简约模式，设置了之后不渲染的任何 layout 的东西，但是会有 context，可以获取到当前菜单。
-   *
-   * @example pure={true}
-   */
+
   pure?: boolean;
-  /**
-   * @name logo 的配置，可以配置url，React 组件 和 false
-   *
-   * @example 设置 logo 为网络地址  logo="https://avatars1.githubusercontent.com/u/8186664?s=460&v=4"
-   * @example 设置 logo 为组件  logo={<img src="https://avatars1.githubusercontent.com/u/8186664?s=460&v=4"/>}
-   * @example 设置 logo 为 false 不显示 logo  logo={false}
-   * @example 设置 logo 为 方法  logo={()=> <img src="https://avatars1.githubusercontent.com/u/8186664?s=460&v=4"/> }
-   * */
+
   logo?: React.ReactNode | JSX.Element | WithFalse<() => React.ReactNode | JSX.Element>;
 
-  /**
-   * @name 页面切换的时候触发
-   *
-   * @example 获取切换的页面地址 onPageChange={(location) => { console.log("切换到："+location.pathname) }}
-   *
-   * */
   onPageChange?: (location?: RouterTypes['location']) => void;
 
-  /**
-   * @name layout 的 loading 效果，设置完成之后只展示一个 loading
-   *
-   * @example loading={true}
-   */
   loading?: boolean;
 
-  /**
-   * @name layout
-   *
-   * @description "zh-CN" | "zh-TW" | "en-US" | "it-IT" | "ko-KR"
-   * @example 中文 layout="zh-CN"
-   * @example 英文 layout="en-US"
-   */
   locale?: LocaleType;
 
-  /**
-   * @name 是否收起 layout 是严格受控的，可以 设置为 true，一直收起
-   *
-   * @example collapsed={true}
-   */
   collapsed?: boolean;
 
-  /**
-   * @name 收起和展开的时候触发事件
-   *
-   * @example onCollapse=(collapsed)=>{ setCollapsed(collapsed) };
-   */
   onCollapse?: (collapsed: boolean) => void;
 
-  /**
-   * @name 页脚的配置
-   *
-   * @example 不展示dom footerRender={false}
-   * @example 使用 layout 的  DefaultFooter   footerRender={() => (<DefaultFooter copyright="这是一条测试文案"/>}
-   */
   footerRender?: WithFalse<
     (props: HeaderViewProps, defaultDom: React.ReactNode) => React.ReactNode
   >;
 
-  /**
-   * @name 设置 PageHeader 的面包屑，只能处理数据
-   *
-   * @example 手动设置 breadcrumbRender={(routers = []) => [ { path: '/', breadcrumbName: '主页'} ]
-   * @example 增加一项 breadcrumbRender={(routers = []) => { return [{ path: '/', breadcrumbName: '主页'} ,...routers ]}
-   * @example 删除首页 breadcrumbRender={(routers = []) => { return routers.filter(item => item.path !== '/')}
-   * @example 不显示面包屑 breadcrumbRender={false}
-   */
   breadcrumbRender?: WithFalse<
     (routers: AntdBreadcrumbProps['items']) => AntdBreadcrumbProps['items']
   >;
 
-  /**
-   * @name 设置页面的标题
-   * @example 根据页面的路由设置标题 pageTitleRender={(props) => { return props.location.pathname }}
-   * @example 不显示标题 pageTitleRender={false}
-   * @example 根据默认的标题设置 pageTitleRender={(props,defaultPageTitle) => { return defaultPageTitle + '这是一个测试标题' }}
-   * @example 根据 info 来自己组合标题 pageTitleRender={(props,defaultPageTitle,info) => { return info.title + "-" + info.pageName }
-   */
   pageTitleRender?: WithFalse<
     (
       props: GetPageTitleProps,
       defaultPageTitle?: string,
       info?: {
-        // 页面标题
         title: string;
-        // locale 的 title
         id: string;
-        // 页面标题不带默认的 title
         pageName: string;
       },
     ) => string
   >;
-  /**
-   * @name 处理 menuData 的数据，可以动态的控制数据
-   * @see 尽量不要用异步数据来处理，否则可能造成更新不及时，如果异步数据推荐使用 menu.request 和 params。
-   *
-   * @example 删除一些菜单 menuDataRender=((menuData) => { return menuData.filter(item => item.name !== 'test') })
-   * @example 增加一些菜单 menuDataRender={(menuData) => { return menuData.concat({ path: '/test', name: '测试', icon: 'smile' }) }}
-   * @example 修改菜单 menuDataRender={(menuData) => { return menuData.map(item => { if (item.name === 'test') { item.name = '测试' } return item }) }}
-   * @example 打平数据 menuDataRender={(menuData) => { return menuData.reduce((pre, item) => { return pre.concat(item.children || []) }, []) }}
-   */
+
   menuDataRender?: (menuData: MenuDataItem[]) => MenuDataItem[];
 
-  /**
-   * @name 处理每个面包屑的配置，需要直接返回 dom
-   * @description (route: Route, params: any, routes: Array<Route>, paths: Array<string>) => React.ReactNode
-   *
-   * @example 设置 disabled： itemRender={(route, params, routes, paths) => { return <Button disabled>{route.breadcrumbName}</Button> }}
-   * @example 拼接 path： itemRender={(route, params, routes, paths) => { return <a href={paths.join('/')}>{route.breadcrumbName}</a> }}
-   */
   itemRender?: AntdBreadcrumbProps['itemRender'];
 
   formatMessage?: (message: MessageDescriptor) => string;
-  /** @name 是否禁用移动端模式
-   *
-   * @see 有的管理系统不需要移动端模式，此属性设置为true即可
-   * @example disableMobile={true}
-   *  */
+
   disableMobile?: boolean;
 
-  /**
-   * content 的样式
-   *
-   * @example 背景颜色为红色 contentStyle={{ backgroundColor: 'red '}}
-   */
   contentStyle?: CSSProperties;
 
   className?: string;
-
-  /** PageHeader 的 BreadcrumbProps 配置，会透传下去 */
   breadcrumbProps?: AntdBreadcrumbProps & LayoutBreadcrumbProps;
 
-  /** @name 水印的相关配置 */
   waterMarkProps?: WaterMarkProps;
 
-  /**
-   * @name 操作菜单重新刷新
-   *
-   * @example  重新获取菜单 actionRef.current.reload();
-   * */
   actionRef?: React.MutableRefObject<
     | {
-        reload: () => void;
-      }
+      reload: () => void;
+    }
     | undefined
   >;
 
-  /**
-   * @name 错误处理组件
-   *
-   * @example ErrorBoundary={<MyErrorBoundary/>}
-   */
   ErrorBoundary?: any;
 
-  /**
-   * @name  侧边菜单的类型, menu.type 的快捷方式
-   * @type "sub" | "group"
-   * @example group
-   */
   siderMenuType?: 'sub' | 'group';
 
   isChildrenLayout?: boolean;
@@ -273,7 +167,6 @@ const renderSiderMenu = (props: ProLayoutProps, matchMenuKeys: string[]): React.
   }
   let { menuData } = props;
 
-  /** 如果是分割菜单模式，需要专门实现一下 */
   if (splitMenus && (openKeys !== false || layout === 'mix') && !isMobile) {
     const [key] = selectedKeys || matchMenuKeys;
     if (key) {
@@ -282,7 +175,6 @@ const renderSiderMenu = (props: ProLayoutProps, matchMenuKeys: string[]): React.
       menuData = [];
     }
   }
-  // 这里走了可以少一次循环
   const clearMenuData = clearMenuItem(menuData || []);
   if (clearMenuData && clearMenuData?.length < 1 && (splitMenus || suppressSiderWhenMenuEmpty)) {
     return null;
@@ -297,7 +189,6 @@ const renderSiderMenu = (props: ProLayoutProps, matchMenuKeys: string[]): React.
     <SiderMenu
       matchMenuKeys={matchMenuKeys}
       {...props}
-      // 这里走了可以少一次循环
       menuData={clearMenuData}
       stylish={props.stylish?.sider}
     />
@@ -357,11 +248,6 @@ const getpaddingInlineStart = (
   return 0;
 };
 
-/**
- * 🌃 Powerful and easy to use beautiful layout 🏄‍ Support multiple topics and layout types
- *
- * @param props
- */
 const BaseProLayout: React.FC<ProLayoutProps> = (props) => {
   const {
     children,
@@ -397,17 +283,11 @@ const BaseProLayout: React.FC<ProLayoutProps> = (props) => {
     onChange: menu?.onLoadingChange,
   });
 
-  // give a default key for swr
   const [defaultId] = useState(() => {
     layoutIndex += 1;
     return `pro-layout-${layoutIndex}`;
   });
 
-  /**
-   * 处理国际化相关 formatMessage
-   * 如果有用户配置的以用户为主
-   * 如果没有用自己实现的
-   */
   const formatMessage = useCallback(
     ({ id, defaultMessage, ...restParams }: { id: string; defaultMessage?: string }): string => {
       if (propsFormatMessage) {
@@ -482,7 +362,6 @@ const BaseProLayout: React.FC<ProLayoutProps> = (props) => {
     [matchMenus],
   );
 
-  // 当前选中的menu，一般不会为空
   const currentMenu = (matchMenus[matchMenus.length - 1] || {}) as ProSettings & MenuDataItem;
 
   const currentMenuLayoutProps = useCurrentMenuLayoutProps(currentMenu);
@@ -501,9 +380,6 @@ const BaseProLayout: React.FC<ProLayoutProps> = (props) => {
 
   const isMobile = (colSize === 'sm' || colSize === 'xs') && !props.disableMobile;
 
-  // If it is a fix menu, calculate padding
-  // don't need padding in phone mode
-  /* Checking if the menu is loading and if it is, it will return a skeleton loading screen. */
   const hasLeftPadding = propsLayout !== 'top' && !isMobile;
 
   const [collapsed, onCollapse] = useMergedState<boolean>(
@@ -520,7 +396,6 @@ const BaseProLayout: React.FC<ProLayoutProps> = (props) => {
     },
   );
 
-  // Splicing parameters, adding menuData and formatMessage in props
   const defaultProps = Omit(
     {
       prefixCls,
@@ -535,7 +410,6 @@ const BaseProLayout: React.FC<ProLayoutProps> = (props) => {
     ['className', 'style', 'breadcrumbRender'],
   );
 
-  // gen page title
   const pageTitleInfo = defaultPageTitleRender(
     {
       pathname: location.pathname,
@@ -545,7 +419,6 @@ const BaseProLayout: React.FC<ProLayoutProps> = (props) => {
     props,
   );
 
-  // gen breadcrumbProps, parameter for pageHeader
   const breadcrumbProps = getBreadcrumbProps(
     {
       ...(defaultProps as BreadcrumbProLayoutProps),
@@ -555,7 +428,6 @@ const BaseProLayout: React.FC<ProLayoutProps> = (props) => {
     props,
   );
 
-  // render sider dom
   const siderMenuDom = renderSiderMenu(
     {
       ...defaultProps,
@@ -567,7 +439,6 @@ const BaseProLayout: React.FC<ProLayoutProps> = (props) => {
     matchMenuKeys,
   );
 
-  // render header dom
   const headerDom = headerRender(
     {
       ...defaultProps,
@@ -581,7 +452,6 @@ const BaseProLayout: React.FC<ProLayoutProps> = (props) => {
     matchMenuKeys,
   );
 
-  // render footer dom
   const footerDom = footerRender({
     isMobile,
     collapsed,
@@ -590,14 +460,12 @@ const BaseProLayout: React.FC<ProLayoutProps> = (props) => {
 
   const { isChildrenLayout: contextIsChildrenLayout } = useContext(RouteContext);
 
-  // 如果 props 中定义，以 props 为准
   const isChildrenLayout =
     propsIsChildrenLayout !== undefined ? propsIsChildrenLayout : contextIsChildrenLayout;
 
   const proLayoutClassName = `${prefixCls}-layout`;
   const { wrapSSR, hashId } = useStyle(proLayoutClassName);
 
-  // gen className
   const className = classNames(props.className, hashId, 'ant-design-pro', proLayoutClassName, {
     [`screen-${colSize}`]: colSize,
     [`${proLayoutClassName}-top-menu`]: propsLayout === 'top',
@@ -606,29 +474,23 @@ const BaseProLayout: React.FC<ProLayoutProps> = (props) => {
     [`${proLayoutClassName}-${propsLayout}`]: propsLayout,
   });
 
-  /** 计算 slider 的宽度 */
   const leftSiderWidth = getpaddingInlineStart(!!hasLeftPadding, collapsed, siderWidth);
 
-  // siderMenuDom 为空的时候，不需要 padding
   const genLayoutStyle: CSSProperties = {
     position: 'relative',
   };
 
-  // if is some layout children, don't need min height
   if (isChildrenLayout || (contentStyle && contentStyle.minHeight)) {
     genLayoutStyle.minHeight = 0;
   }
 
-  /** 页面切换的时候触发 */
   useEffect(() => {
     props.onPageChange?.(props.location);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.pathname, location.pathname?.search]);
 
   const [hasFooterToolbar, setHasFooterToolbar] = useState(false);
-  /**
-   * 使用number是因为多标签页的时候有多个 PageContainer，只有有任意一个就应该展示这个className
-   */
+
   const [hasPageContainer, setHasPageContainer] = useState(0);
   useDocumentTitle(pageTitleInfo, props.title || false);
   const bgImgStyleList = useMemo(() => {
@@ -638,6 +500,7 @@ const BaseProLayout: React.FC<ProLayoutProps> = (props) => {
           <img
             key={index}
             src={item.src}
+            alt=""
             style={{
               position: 'absolute',
               ...item,
@@ -730,19 +593,20 @@ const ProLayout: React.FC<ProLayoutProps> = (props) => {
   const darkProps =
     props.navTheme !== undefined
       ? {
-          dark: props.navTheme === 'realDark',
-        }
+        dark: props.navTheme === 'realDark',
+      }
       : {};
 
   return (
     <ConfigProvider
+      // direction='rtl'
       theme={
         colorPrimary
           ? {
-              token: {
-                colorPrimary: colorPrimary,
-              },
-            }
+            token: {
+              colorPrimary: colorPrimary,
+            },
+          }
           : undefined
       }
     >

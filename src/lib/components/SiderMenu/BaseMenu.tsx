@@ -7,8 +7,8 @@ import { Menu, Skeleton } from 'antd';
 import type { ItemType } from 'antd/lib/menu/hooks/useItems';
 import classNames from 'classnames';
 import React, { useContext, useEffect, useMemo, useRef } from 'react';
-import type { PureSettings } from '../../defaultSettings';
-import { defaultSettings } from '../../defaultSettings';
+import type { PureSettings } from '../../defaultsettings';
+import { defaultSettings } from '../../defaultsettings';
 import type { MenuDataItem, MessageDescriptor, RouterTypes, WithFalse } from '../../typing';
 import { getOpenKeysFromMenuData } from '../../utils/utils';
 import type { PrivateSiderMenuProps } from './SiderMenu';
@@ -216,18 +216,18 @@ class MenuUtil {
         } as ItemType,
         isGroup && level === 0
           ? ({
-              type: 'divider',
-              prefixCls,
-              className: `${baseClassName}-divider`,
-              key: (item.key! || item.path!) + '-group-divider',
-              style: {
-                padding: 0,
-                borderBlockEnd: 0,
-                margin: this.props.collapsed ? '4px' : '6px 16px',
-                marginBlockStart: this.props.collapsed ? 4 : 8,
-                borderColor: designToken?.layout?.sider?.colorMenuItemDivider,
-              },
-            } as ItemType)
+            type: 'divider',
+            prefixCls,
+            className: `${baseClassName}-divider`,
+            key: (item.key! || item.path!) + '-group-divider',
+            style: {
+              padding: 0,
+              borderBlockEnd: 0,
+              margin: this.props.collapsed ? '4px' : '6px 16px',
+              marginBlockStart: this.props.collapsed ? 4 : 8,
+              borderColor: designToken?.layout?.sider?.colorMenuItemDivider,
+            },
+          } as ItemType)
           : undefined,
       ].filter(Boolean) as ItemType[];
     }
@@ -420,10 +420,10 @@ const BaseMenu: React.FC<BaseMenuProps & PrivateSiderMenuProps> = (props) => {
     value: propsSelectedKeys,
     onChange: onSelect
       ? (keys) => {
-          if (onSelect && keys) {
-            onSelect(keys as any);
-          }
+        if (onSelect && keys) {
+          onSelect(keys as any);
         }
+      }
       : undefined,
   });
   useEffect(() => {
@@ -498,8 +498,8 @@ const BaseMenu: React.FC<BaseMenuProps & PrivateSiderMenuProps> = (props) => {
           mode?.includes('inline')
             ? { padding: 24 }
             : {
-                marginBlockStart: 16,
-              }
+              marginBlockStart: 16,
+            }
         }
       >
         <Skeleton

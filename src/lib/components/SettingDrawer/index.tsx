@@ -20,8 +20,8 @@ import {
 import omit from 'omit.js';
 import useMergedState from 'rc-util/lib/hooks/useMergedState';
 import React, { useEffect, useRef, useState } from 'react';
-import type { ProSettings } from '../../defaultSettings';
-import { defaultSettings } from '../../defaultSettings';
+import type { ProSettings } from '../../defaultsettings';
+import { defaultSettings } from '../../defaultsettings';
 import { getLanguage, gLocaleObject } from '../../locales';
 import { genStringToTheme } from '../../utils/utils';
 import { BlockCheckbox } from './BlockCheckbox';

@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 export default {
   'app.setting.pagestyle': '스타일 설정',
   'app.setting.pagestyle.dark': '다크 모드',

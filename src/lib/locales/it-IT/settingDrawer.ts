@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 export default {
   'app.setting.pagestyle': 'Impostazioni di stile',
   'app.setting.pagestyle.dark': 'Tema scuro',

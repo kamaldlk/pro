@@ -8,10 +8,10 @@ import type {
 } from 'antd/lib/breadcrumb/Breadcrumb';
 import type H from 'history';
 import pathToRegexp from 'path-to-regexp';
-import type { ProSettings } from '../defaultSettings';
-import type { ProLayoutProps } from '../ProLayout';
+import type { ProSettings } from '../defaultsettings';
+import type { ProLayoutProps } from '../layout';
 import type { MenuDataItem, MessageDescriptor, WithFalse } from '../typing';
-import { urlToList } from './pathTools';
+import { urlToList } from './pathtools';
 
 export const getVersion = () => {
   if (typeof process === 'undefined') return version;
@@ -22,10 +22,10 @@ export type BreadcrumbProLayoutProps = {
   breadcrumbList?: { title: string; href: string }[];
   home?: string;
   location?:
-    | H.Location
-    | {
-        pathname?: string;
-      };
+  | H.Location
+  | {
+    pathname?: string;
+  };
   menu?: ProSettings['menu'];
   breadcrumbMap?: Map<string, MenuDataItem>;
   formatMessage?: (message: MessageDescriptor) => string;
@@ -47,8 +47,8 @@ const defaultItemRender: AntdBreadcrumbProps['itemRender'] = (route, _, routes) 
       onClick={
         path
           ? () => {
-              location.href = path;
-            }
+            location.href = path;
+          }
           : undefined
       }
     >
@@ -111,11 +111,11 @@ const conversionFromLocation = (
       const { hideInBreadcrumb } = currentBreadcrumb;
       return name && !hideInBreadcrumb
         ? {
-            linkPath: url,
-            breadcrumbName: name,
-            title: name,
-            component: currentBreadcrumb.component,
-          }
+          linkPath: url,
+          breadcrumbName: name,
+          title: name,
+          component: currentBreadcrumb.component,
+        }
         : { linkPath: '', breadcrumbName: '', title: '' };
     })
     .filter((item) => item && item.linkPath);
@@ -182,11 +182,11 @@ export const getBreadcrumbProps = (
   // 如果当前 ant design 包的版本大于等于5.3.0，则返回一个对象{items,itemRender},否则返回一个对象{routes:item,itemRender}
   return compareVersions(getVersion(), '5.3.0') > -1
     ? ({
-        items,
-        itemRender,
-      } as BreadcrumbListReturn)
+      items,
+      itemRender,
+    } as BreadcrumbListReturn)
     : ({
-        routes: items,
-        itemRender,
-      } as unknown as BreadcrumbListReturn);
+      routes: items,
+      itemRender,
+    } as unknown as BreadcrumbListReturn);
 };

@@ -7,7 +7,7 @@ import classNames from 'classnames';
 import ResizeObserver from 'rc-resize-observer';
 import * as React from 'react';
 import useStyle from './style/index';
-import type { ContentWidth } from '../../defaultSettings';
+import type { ContentWidth } from '../../defaultsettings';
 import 'antd/lib/breadcrumb/style';
 import type { LegacyBreadcrumbProps, NewBreadcrumbProps } from 'antd/lib/breadcrumb/Breadcrumb';
 

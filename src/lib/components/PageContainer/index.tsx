@@ -5,16 +5,16 @@ import { Affix, Breadcrumb, ConfigProvider, Tabs } from 'antd';
 import classNames from 'classnames';
 import type { ReactNode } from 'react';
 import React, { useContext, useEffect, useMemo } from 'react';
-import { RouteContext } from '../../context/RouteContext';
+import { RouteContext } from '../../context/routecontext';
 import type { WithFalse } from '../../typing';
-import type { FooterToolbarProps } from '../FooterToolbar';
-import { FooterToolbar } from '../FooterToolbar';
-import { GridContent } from '../GridContent';
-import type { PageHeaderProps } from '../PageHeader';
-import { PageHeader } from '../PageHeader';
-import { PageLoading } from '../PageLoading';
-import type { WaterMarkProps } from '../WaterMark';
-import { WaterMark } from '../WaterMark';
+import type { FooterToolbarProps } from '../footertoolbar';
+import { FooterToolbar } from '../footertoolbar';
+import { GridContent } from '../gridcontent';
+import type { PageHeaderProps } from '../pageheader';
+import { PageHeader } from '../pageheader';
+import { PageLoading } from '../pageloading';
+import type { WaterMarkProps } from '../watermark';
+import { WaterMark } from '../watermark';
 import type { PageContainerToken, pageContainerToken } from './style';
 import { useStyle } from './style';
 import { useStylish } from './style/stylish';
@@ -135,33 +135,33 @@ const renderFooter: React.FC<
   tabProps,
   prefixedClassName,
 }) => {
-  if (Array.isArray(tabList) || tabBarExtraContent) {
-    return (
-      <Tabs
-        className={`${prefixedClassName}-tabs ${hashId}`}
-        activeKey={tabActiveKey}
-        onChange={(key) => {
-          if (onTabChange) {
-            onTabChange(key);
-          }
-        }}
-        tabBarExtraContent={tabBarExtraContent}
-        // @ts-ignore
-        items={tabList?.map((item, index) => ({
-          label: item.tab,
-          ...item,
-          key: item.key?.toString() || index?.toString(),
-        }))}
-        {...tabProps}
-      >
-        {tabList?.map((item, index) => {
-          return <Tabs.TabPane key={item.key || index} tab={item.tab} {...item} />;
-        })}
-      </Tabs>
-    );
-  }
-  return null;
-};
+    if (Array.isArray(tabList) || tabBarExtraContent) {
+      return (
+        <Tabs
+          className={`${prefixedClassName}-tabs ${hashId}`}
+          activeKey={tabActiveKey}
+          onChange={(key) => {
+            if (onTabChange) {
+              onTabChange(key);
+            }
+          }}
+          tabBarExtraContent={tabBarExtraContent}
+          // @ts-ignore
+          items={tabList?.map((item, index) => ({
+            label: item.tab,
+            ...item,
+            key: item.key?.toString() || index?.toString(),
+          }))}
+          {...tabProps}
+        >
+          {tabList?.map((item, index) => {
+            return <Tabs.TabPane key={item.key || index} tab={item.tab} {...item} />;
+          })}
+        </Tabs>
+      );
+    }
+    return null;
+  };
 
 const renderPageHeader = (
   content: React.ReactNode,
@@ -310,7 +310,7 @@ const PageContainerBase: React.FC<PageContainerProps> = (props) => {
   /** 告诉 props 是否存在 footerBar */
   useEffect(() => {
     if (!value || !value?.setHasPageContainer) {
-      return () => {};
+      return () => { };
     }
     value?.setHasPageContainer?.((num) => num + 1);
     return () => {

@@ -1,6 +1,6 @@
 import { List, Switch } from 'antd';
 import React from 'react';
-import type { ProSettings } from '../../defaultSettings';
+import type { ProSettings } from '../../defaultsettings';
 import { getFormatMessage } from './index';
 import { renderLayoutSettingItem } from './LayoutChange';
 
