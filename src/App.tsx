@@ -10,14 +10,14 @@ import {
   QuestionCircleFilled,
   SearchOutlined,
 } from '@ant-design/icons';
-import type { ProSettings } from './lib';
+import type { ProSettings } from './layout';
 import {
   PageContainer,
   ProCard,
   ProConfigProvider,
   ProLayout,
   SettingDrawer,
-} from './lib';
+} from './layout';
 import { css } from '@emotion/css';
 import { Button, Divider, Input, Dropdown, Popover, theme } from 'antd';
 import defaultProps from './p';
