@@ -1,4 +1,5 @@
-﻿import { openVisibleCompatible } from '@ant-design/pro-utils';
+﻿/* eslint-disable react-hooks/exhaustive-deps */
+import { openVisibleCompatible } from '@ant-design/pro-utils';
 import { Popover } from 'antd';
 import classNames from 'classnames';
 import React, { useMemo, useState } from 'react';
@@ -8,12 +9,6 @@ import { SimpleContent } from './simplecontent';
 import { useStyle } from './style/index';
 import type { AppListProps, AppItemProps } from './types';
 
-/**
- * 默认渲染logo的方式，如果是个string，用img。否则直接返回
- *
- * @param logo
- * @returns
- */
 export const defaultRenderLogo = (
   logo: React.ReactNode | (() => React.ReactNode),
 ): React.ReactNode => {
@@ -26,12 +21,7 @@ export const defaultRenderLogo = (
   return logo;
 };
 
-/**
- * 相关品牌额icon 列表。用于展示相关的品牌
- *
- * @param props
- * @returns
- */
+
 export const AppsLogoComponents: React.FC<{
   appList?: AppListProps;
   itemClick?: (item: AppItemProps, popoverRef?: React.RefObject<HTMLSpanElement>) => void;
