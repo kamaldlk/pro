@@ -1,6 +1,6 @@
 ﻿import { SearchOutlined } from '@ant-design/icons';
 import { useStyle } from '../../../provider';
-import { useDebounceFn } from '@ant-design/pro-utils';
+import { useDebounceFn } from '../../../utils';
 import type { SelectProps } from 'antd';
 import { ConfigProvider, Select } from 'antd';
 

@@ -1,4 +1,4 @@
-import { useMountMergeState } from '@ant-design/pro-utils';
+import { useMountMergeState } from '../../../utils';
 import { Avatar, ConfigProvider } from 'antd';
 
 import classNames from 'classnames';

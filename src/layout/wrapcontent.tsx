@@ -1,4 +1,4 @@
-import { ErrorBoundary } from '@ant-design/pro-utils';
+import { ErrorBoundary } from '../utils';
 import { Layout } from 'antd';
 import classNames from 'classnames';
 import type { CSSProperties } from 'react';

@@ -1,4 +1,4 @@
-import { openVisibleCompatible } from '@ant-design/pro-utils';
+import { openVisibleCompatible } from '../../../utils';
 import { ConfigProvider, Drawer } from 'antd';
 import classNames from 'classnames';
 import Omit from 'omit.js';

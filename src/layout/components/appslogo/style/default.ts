@@ -1,5 +1,5 @@
 ﻿import type { GenerateStyle } from '../../../../provider';
-import { resetComponent } from '@ant-design/pro-utils';
+import { resetComponent } from '../../../../utils';
 import type { AppsLogoComponentsToken } from './index';
 const genAppsLogoComponentsDefaultListStyle: GenerateStyle<AppsLogoComponentsToken> = (token) => {
   return {

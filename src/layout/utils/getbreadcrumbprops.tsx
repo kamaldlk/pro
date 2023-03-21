@@ -1,5 +1,5 @@
 /* eslint-disable no-restricted-globals */
-import { compareVersions } from '@ant-design/pro-utils';
+import { compareVersions } from '../../utils';
 import { version } from 'antd';
 import type {
   BreadcrumbItemType,

@@ -1,7 +1,7 @@
 import { createFromIconfontCN } from '@ant-design/icons';
 import type { ProTokenType } from '../../../provider';
 import { ProProvider } from '../../../provider';
-import { isImg, isUrl, useMountMergeState } from '@ant-design/pro-utils';
+import { isImg, isUrl, useMountMergeState } from '../../../utils';
 import type { MenuProps } from 'antd';
 import { Menu, Skeleton } from 'antd';
 import type { ItemType } from 'antd/lib/menu/hooks/useItems';

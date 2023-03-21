@@ -4,7 +4,7 @@ import {
   NotificationOutlined,
   SettingOutlined,
 } from '@ant-design/icons';
-import { compareVersions, isBrowser, merge, openVisibleCompatible } from '@ant-design/pro-utils';
+import { compareVersions, isBrowser, merge, openVisibleCompatible } from '../../../utils';
 import { useUrlSearchParams } from '@umijs/use-params';
 import {
   Alert,

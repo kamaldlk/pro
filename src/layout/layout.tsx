@@ -1,6 +1,6 @@
 import type { GenerateStyle, ProTokenType } from '../provider';
 import { ProConfigProvider, ProProvider } from '../provider';
-import { isBrowser, useDocumentTitle, useMountMergeState } from '@ant-design/pro-utils';
+import { isBrowser, useDocumentTitle, useMountMergeState } from '../utils';
 import { getMatchMenu } from '@umijs/route-utils';
 import type { NewBreadcrumbProps as AntdBreadcrumbProps } from 'antd/lib/breadcrumb/Breadcrumb';
 import { ConfigProvider, Layout } from 'antd';

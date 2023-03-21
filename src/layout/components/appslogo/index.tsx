@@ -1,5 +1,5 @@
 ﻿/* eslint-disable react-hooks/exhaustive-deps */
-import { openVisibleCompatible } from '@ant-design/pro-utils';
+import { openVisibleCompatible } from '../../../utils';
 import { Popover } from 'antd';
 import classNames from 'classnames';
 import React, { useMemo, useState } from 'react';
