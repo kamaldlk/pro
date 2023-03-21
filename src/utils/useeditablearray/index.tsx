@@ -184,7 +184,7 @@ export function editableRowByKey<RecordType>(
    * @param parentKey
    */
   function dig(records: RecordType[], map_row_parentKey?: React.Key, map_row_index?: number) {
-    records.forEach((record, index) => {
+    records.forEach((record:any, index) => {
       const eachIndex = (map_row_index || 0) * 10 + index;
       const recordKey = getRowKey(record, eachIndex).toString();
       // children 取在前面方便拼的时候按照反顺序放回去
@@ -248,7 +248,7 @@ export function editableRowByKey<RecordType>(
 
     map.forEach((value) => {
       if (value.map_row_parentKey && value.map_row_key) {
-        const { map_row_parentKey, map_row_key, ...rest } = value;
+        const { map_row_parentKey, map_row_key, ...rest }:any = value;
         if (kvArrayMap.has(map_row_key)) {
           rest[childrenColumnName] = kvArrayMap.get(map_row_key);
         }
@@ -510,7 +510,7 @@ export function useEditableArray<RecordType>(
     const map = new Map<React.Key, React.Key>();
     //存在children时会覆盖Map的key,导致使用数组索引查找key错误
     const loopGetKey = (dataSource: RecordType[], parentKey?: string) => {
-      dataSource?.forEach((record, index) => {
+      dataSource?.forEach((record:any, index) => {
         const key =
           parentKey === undefined || parentKey === null
             ? index.toString()

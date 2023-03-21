@@ -6,7 +6,7 @@
  * @returns T
  */
 const merge = <T>(...rest: any[]): T => {
-  const obj = {};
+  const obj:any = {};
   const il = rest.length;
   let key;
   let i = 0;

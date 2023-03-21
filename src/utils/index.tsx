@@ -53,7 +53,7 @@ import type {
 import { editableRowByKey, recordKeyToString, useEditableArray } from './useeditablearray';
 import type { UseEditableMapType, UseEditableMapUtilType } from './useeditablemap';
 import { useEditableMap } from './useeditablemap';
-import { useMountMergeState } from './usemountmergestate';
+import { useMountMergeState } from './useMountMergeState';
 import { compareVersions } from './compareversions';
 import { openVisibleCompatible } from './compareversions/openvisiblecompatible';
 import { menuOverlayCompatible } from './compareversions/menuoverlaycompatible';
