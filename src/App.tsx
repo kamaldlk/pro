@@ -1,7 +1,6 @@
 /* eslint-disable import/no-anonymous-default-export */
 import React, { useState } from 'react';
 import {
-  CaretDownFilled,
   DoubleRightOutlined,
   GithubFilled,
   InfoCircleFilled,
@@ -19,7 +18,7 @@ import {
   SettingDrawer,
 } from './layout';
 import { css } from '@emotion/css';
-import { Button, Divider, Input, Dropdown, Popover, theme } from 'antd';
+import { Button,  Input, Dropdown, theme } from 'antd';
 import defaultProps from './p';
 import './App.css';
 
@@ -82,123 +81,6 @@ const List: React.FC<{ title: string; style?: React.CSSProperties }> = (props) =
           return <Item key={index}>具体的解决方案-{index}</Item>;
         })}
       </div>
-    </div>
-  );
-};
-
-const MenuCard = () => {
-  const { token } = theme.useToken();
-  return (
-    <div
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-      }}
-    >
-      <Divider
-        style={{
-          height: '1.5em',
-        }}
-        type="vertical"
-      />
-      <Popover
-        placement="bottomLeft"
-        content={
-          <div style={{ display: 'flex', padding: '32px 40px' }}>
-            <div style={{ flex: 1 }}>
-              <List title="金融解决方案" />
-              <List
-                title="其他解决方案"
-                style={{
-                  marginBlockStart: 32,
-                }}
-              />
-            </div>
-
-            <div
-              style={{
-                width: '308px',
-                borderInlineStart: '1px solid ' + token.colorBorder,
-                paddingInlineStart: 16,
-              }}
-            >
-              <div
-                className={css`
-                  font-size: 14px;
-                  color: ${token.colorText};
-                  line-height: 22px;
-                `}
-              >
-                热门产品
-              </div>
-              {new Array(3).fill(1).map((name, index) => {
-                return (
-                  <div
-                    key={index}
-                    className={css`
-                      border-radius: 4px;
-                      padding: 16px;
-                      margin-top: 4px;
-                      display: flex;
-                      cursor: pointer;
-                      &:hover {
-                        background-color: ${token.colorBgTextHover};
-                      }
-                    `}
-                  >
-                    <img src="https://gw.alipayobjects.com/zos/antfincdn/6FTGmLLmN/bianzu%25252013.svg" />
-                    <div
-                      style={{
-                        marginInlineStart: 14,
-                      }}
-                    >
-                      <div
-                        className={css`
-                          font-size: 14px;
-                          color: ${token.colorText};
-                          line-height: 22px;
-                        `}
-                      >
-                        Ant Design
-                      </div>
-                      <div
-                        className={css`
-                          font-size: 12px;
-                          color: ${token.colorTextSecondary};
-                          line-height: 20px;
-                        `}
-                      >
-                        杭州市较知名的 UI 设计语言
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        }
-      >
-        <div
-          style={{
-            color: token.colorTextHeading,
-            fontWeight: 500,
-            cursor: 'pointer',
-            display: 'flex',
-            gap: 4,
-            paddingInlineStart: 8,
-            paddingInlineEnd: 12,
-            alignItems: 'center',
-          }}
-          className={css`
-            &:hover {
-              background-color: ${token.colorBgTextHover};
-            }
-          `}
-        >
-          <span> 企业级资产中心</span>
-          <CaretDownFilled />
-        </div>
-      </Popover>
     </div>
   );
 };
@@ -339,7 +221,6 @@ export default () => {
             return (
               <>
                 {defaultDom}
-                <MenuCard />
               </>
             );
           }}
@@ -387,17 +268,17 @@ export default () => {
               </Button>,
             ]}
             subTitle="简单的描述"
-            footer={[
-              <Button key="3">重置</Button>,
-              <Button key="2" type="primary">
-                提交
-              </Button>,
-            ]}
+            // footer={[
+            //   <Button key="3">重置</Button>,
+            //   <Button key="2" type="primary">
+            //     提交
+            //   </Button>,
+            // ]}
           >
             <ProCard
               style={{
                 height: '200vh',
-                minHeight: 800,
+                minHeight: 500,
               }}
             >
               <div />
