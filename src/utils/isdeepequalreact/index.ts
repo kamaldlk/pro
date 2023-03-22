@@ -5,7 +5,7 @@
 /* eslint-disable eqeqeq */
 /* eslint-disable no-plusplus */
 // do not edit .js files directly - edit src/index.jst
-
+// @ts-nocheck
 export function isDeepEqualReact(a: any, b: any, ignoreKeys?: string[], debug?: boolean) {
   if (a === b) return true;
 

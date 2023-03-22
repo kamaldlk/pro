@@ -1,4 +1,4 @@
-import { useIntl } from '@ant-design/pro-provider';
+import { useIntl } from '../../../provider';
 import { Button, ConfigProvider } from 'antd';
 import classNames from 'classnames';
 import React, { useContext } from 'react';

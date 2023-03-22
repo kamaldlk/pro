@@ -1,11 +1,11 @@
-﻿import type { GenerateStyle, ProAliasToken } from '@ant-design/pro-provider';
-import { useStyle as useAntdStyle } from '@ant-design/pro-provider';
+﻿import type { GenerateStyle, ProAliasToken } from '../../../provider';
+import { useStyle as useAntdStyle } from '../../../provider';
 
 export interface ProToken extends ProAliasToken {
   componentCls: string;
 }
 
-const genProStyle: GenerateStyle<ProToken> = (token) => {
+const genProStyle: GenerateStyle<ProToken> = (token:any) => {
   return {
     [`${token.componentCls}-label`]: { cursor: 'pointer' },
     [`${token.componentCls}-overlay`]: {
@@ -17,7 +17,7 @@ const genProStyle: GenerateStyle<ProToken> = (token) => {
 };
 
 export function useStyle(prefixCls: string) {
-  return useAntdStyle('FilterDropdown', (token) => {
+  return useAntdStyle('FilterDropdown', (token:any) => {
     const proToken: ProToken = {
       ...token,
       componentCls: `.${prefixCls}`,

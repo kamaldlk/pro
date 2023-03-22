@@ -43,7 +43,7 @@ import {
   resetComponent,
   setAlpha,
   useStyle,
-} from '@ant-design/pro-provider';
+} from '../provider';
 import type {
   RowEditableConfig,
   RowEditableType,
@@ -53,7 +53,7 @@ import type {
 import { editableRowByKey, recordKeyToString, useEditableArray } from './useeditablearray';
 import type { UseEditableMapType, UseEditableMapUtilType } from './useeditablemap';
 import { useEditableMap } from './useeditablemap';
-import { useMountMergeState } from './useMountMergeState';
+import { useMountMergeState } from './usemountmergestate';
 import { compareVersions } from './compareversions';
 import { openVisibleCompatible } from './compareversions/openvisiblecompatible';
 import { menuOverlayCompatible } from './compareversions/menuoverlaycompatible';

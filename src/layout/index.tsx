@@ -42,7 +42,7 @@ import type { ProLayoutProps } from './layout';
 import { ProLayout } from './layout';
 import { getMenuData } from './utils/getmenudata';
 import { ProCard } from '../card';
-import { ProConfigProvider } from '@ant-design/pro-components';
+import { ProConfigProvider } from '../provider';
 export type { ProSettings, ProSettings as Settings } from './defaultsettings';
 export type { MenuDataItem } from './typing';
 
