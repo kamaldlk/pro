@@ -79,7 +79,7 @@ export const AppsLogoComponents: React.FC<{
         }}
       />
       <Popover
-        placement="bottomRight"
+        placement="bottomLeft"
         trigger={['click']}
         zIndex={9999}
         arrow={false}

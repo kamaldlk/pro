@@ -12,7 +12,7 @@ import type { HeaderViewProps } from '../header';
 import type { PrivateSiderMenuProps, SiderMenuProps } from '../sidermenu/SiderMenu';
 import { renderLogoAndTitle } from '../sidermenu/SiderMenu';
 import { TopNavHeader } from '../topnavheader';
-import { ActionsContent as ActionsContent } from './actionscontent';
+import { ActionsContent } from './actionscontent';
 import { useStyle } from './style';
 import type { AppListProps, AppItemProps } from '../appslogo/types';
 

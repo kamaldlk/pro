@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import type { GenerateStyle } from '../../../provider';
 import { ProProvider } from '../../../provider';
 import type { AvatarProps, SiderProps } from 'antd';
@@ -37,7 +38,7 @@ export const renderLogoAndTitle = (
     return null;
   }
   const logoDom = defaultRenderLogo(logo);
-  const titleDom = <h1>{title ?? 'Ant Design Pro'}</h1>;
+  const titleDom = '';
 
   if (renderFunction) {
     // when collapsed, no render title
@@ -55,9 +56,8 @@ export const renderLogoAndTitle = (
     return <a key="title">{logoDom}</a>;
   }
   return (
-    <a key="title">
+    <a key="title" >
       {logoDom}
-      {titleDom}
     </a>
   );
 };

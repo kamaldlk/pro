@@ -11,7 +11,6 @@ const genProLayoutHeaderStyle: GenerateStyle<ProLayoutHeaderToken> = (token) => 
       [`${token.antCls}-layout-header${token.componentCls}`]: {
         height: token?.layout?.header?.heightLayoutHeader || 56,
         lineHeight: `${token?.layout?.header?.heightLayoutHeader || 56}px`,
-        // hitu 用了这个属性，不能删除哦 @南取
         zIndex: 19,
         width: '100%',
         paddingBlock: 0,
